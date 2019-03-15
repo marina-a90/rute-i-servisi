@@ -3,7 +3,12 @@
 </template>
 
 <script>
-export default {};
+import { logService } from "../services/LogService";
+export default {
+  created() {
+    logService.log("Log this");
+  }
+};
 </script>
 
 <style>

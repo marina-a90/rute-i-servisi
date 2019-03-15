@@ -8,11 +8,23 @@ Vue.config.productionTip = false;
 import Home from "./components/Home.vue";
 import About from "./components/About.vue";
 import Settings from "./components/Settings.vue";
+import User from "./components/User.vue";
+import Profile from "./components/Profile.vue";
+import Posts from "./components/Posts.vue";
 
 const routes = [
   { path: "/", component: Home },
   { path: "/about", component: About },
-  { path: "/settings/:id?", component: Settings }
+  { path: "/settings/:id?", component: Settings },
+  {
+    path: "/user/:id",
+    component: User,
+    redirect: "/user/:id/profile",
+    children: [
+      { path: "profile", component: Profile },
+      { path: "posts", component: Posts }
+    ]
+  }
 ];
 
 const router = new VueRouter({
